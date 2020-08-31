@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import fetchMovie from "./src/helpers/fetchAPI";
+import MovieList from "./src/components/movieList";
 export default function App() {
   const [url, setURL] = useState();
   const URL = "http://www.omdbapi.com/?apikey=5eec5adc&s=la vieja guardia";
@@ -17,8 +18,9 @@ export default function App() {
   };
   return (
     <View style={styles.container}>
-      <Text>Hola</Text>
       <StatusBar style="auto" />
+      <Text>Text Input</Text>
+      <MovieList />
     </View>
   );
 }
