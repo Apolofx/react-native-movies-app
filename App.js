@@ -13,12 +13,13 @@ import fetchMovie from "./src/helpers/fetchAPI";
 import MovieList from "./src/components/movieList";
 
 export default function App() {
-  const [url, setURL] = useState();
-  const [movies, setMovies] = useState();
+  const [url, setURL] = useState("");
+  const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   let URL = `http://www.omdbapi.com/?apikey=5eec5adc&s=${query}`;
 
+  //abstraer este bloque, ()=>(url, callback)
   const fetchData = async (url) => {
     try {
       let response = await fetchMovie(url, 50);
@@ -34,17 +35,19 @@ export default function App() {
     setLoading(true);
     fetchData(URL);
   }, [query]);
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-      <Text>MOVIES</Text>
+      <Text style={{ fontSize: 40, color: "red" }}>HEADER</Text>
       <TextInput
+        style={{ fontSize: 30 }}
         placeholder="Search"
         onChangeText={(text) => setQuery(text)}
         value={query}
       />
       <ActivityIndicator animating={loading} />
-      <MovieList data={movies} />
+      <MovieList data={movies} onItemPress={setMovies} />
     </SafeAreaView>
   );
 }
