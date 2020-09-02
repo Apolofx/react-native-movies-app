@@ -20,7 +20,7 @@ export default function movieList({ data, onItemPress }) {
     );
   };
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Text>Lista de peliculas</Text>
       <FlatList
         data={data}
