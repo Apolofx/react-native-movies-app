@@ -8,6 +8,7 @@ import {
   TextInput,
   Button,
   ActivityIndicator,
+  Image,
 } from "react-native";
 import fetchMovie from "./src/helpers/fetchAPI";
 import MovieList from "./src/components/movieList";
@@ -39,7 +40,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-      <Text style={{ fontSize: 40, color: "red" }}>HEADER</Text>
+      <Image style={styles.logo} source={require("./assets/logo.jpeg")} />
       <TextInput
         style={{ fontSize: 30 }}
         placeholder="Search"
@@ -55,6 +56,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    // backgroundColor: "black",
+    justifyContent: "center",
+  },
+  logo: {
+    alignSelf: "center",
+    height: 100,
+    resizeMode: "contain",
   },
 });
