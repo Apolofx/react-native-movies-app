@@ -8,6 +8,7 @@ export default function SearchBar({ placeholder, onChangeText, value }) {
       <TextInput
         style={styles.text}
         placeholder={placeholder}
+        placeholderTextColor="#564d4d"
         onChangeText={onChangeText}
         value={value}
       />
@@ -32,6 +33,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 10,
     fontSize: 20,
-    color: "#564d4d",
+    color: "white",
   },
 });

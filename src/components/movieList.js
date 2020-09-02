@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { FlatList, View, Text } from "react-native";
+import { FlatList, View, Text, StyleSheet } from "react-native";
 import Details from "./details";
-import { Ionicons } from "@expo/vector-icons";
-
+import { Entypo } from "@expo/vector-icons";
 export default function movieList({ data, onItemPress }) {
   const updateItemState = (index) => {
     let data_copy = [...data];
@@ -12,32 +11,29 @@ export default function movieList({ data, onItemPress }) {
 
   const renderItem = ({ item, index }) => {
     return (
-      <View>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Ionicons
-            name={item.details ? "md-arrow-dropdown" : "md-arrow-dropright"}
-            size={36}
-            color="black"
+      <>
+        <View style={styles.item}>
+          <Entypo
+            name={item.details ? "chevron-small-down" : "chevron-small-right"}
+            size={24}
+            color="white"
           />
           <Text
+            style={styles.text}
             onPress={() => updateItemState(index)}
           >{`${item.Title}, ${item.Year}`}</Text>
         </View>
         {item.details ? <Details movie={item.Title} /> : null}
-      </View>
+      </>
     );
   };
   return (
     <View
       style={{
         flex: 1,
-        // justifyContent: "center",
-        // alignItems: "center",
       }}
     >
-      <Text style={{ alignSelf: "center" }}>Results</Text>
       <FlatList
-        style={{ marginHorizontal: 20 }}
         data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.imdbID}
@@ -45,3 +41,17 @@ export default function movieList({ data, onItemPress }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  text: {
+    color: "white",
+    flex: 1,
+    fontSize: 16,
+  },
+  item: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+  },
+});

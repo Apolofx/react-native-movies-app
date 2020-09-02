@@ -34,8 +34,8 @@ export default function Details({ movie }) {
     const fields = Object.keys(details);
     return fields.map((field, index) => (
       <View key={index} style={styles.textContainer}>
-        <Text style={styles.title}>{`${field}: `}</Text>
-        <Text>{`${details[field]}`}</Text>
+        <Text style={[styles.title, styles.text]}>{`${field}: `}</Text>
+        <Text style={styles.text}>{`${details[field]}`}</Text>
       </View>
     ));
   };
@@ -62,11 +62,16 @@ export default function Details({ movie }) {
 }
 
 const styles = StyleSheet.create({
-  image: { height: 300, resizeMode: "contain" },
+  image: { height: 300, resizeMode: "contain", zIndex: 0 },
   imageContainer: {
-    backgroundColor: "black",
+    zIndex: 1,
+    backgroundColor: "white",
     borderRadius: 20,
     marginVertical: 20,
+    marginHorizontal: 30,
+  },
+  text: {
+    color: "white",
   },
   title: { fontWeight: "600" },
   textContainer: { flexDirection: "row", flexWrap: "wrap" },

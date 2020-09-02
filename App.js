@@ -11,10 +11,9 @@ import {
   Image,
 } from "react-native";
 import fetchMovie from "./src/helpers/fetchAPI";
-import MovieList from "./src/components/movieList";
+import { MovieList, SearchBar } from "./src/components/";
 
 export default function App() {
-  const [url, setURL] = useState("");
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -41,8 +40,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
       <Image style={styles.logo} source={require("./assets/logo.jpeg")} />
-      <TextInput
-        style={{ fontSize: 30 }}
+      <SearchBar
         placeholder="Search"
         onChangeText={(text) => setQuery(text)}
         value={query}
@@ -56,12 +54,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "black",
+    backgroundColor: "black",
     justifyContent: "center",
   },
   logo: {
     alignSelf: "center",
-    height: 100,
+    width: 350,
     resizeMode: "contain",
+    marginVertical: 20,
   },
 });

@@ -4,11 +4,11 @@ const axios = require("axios");
 //   arr.forEach((elem) => (elem.details = false));
 // }
 
-export const fetchDetails = async (url) => {
+export async function fetchDetails(url) {
   const res = await axios(url);
   console.log(res.data);
   return res.data;
-};
+}
 
 export default async function fetchMovie(url, max_results = 10) {
   const res = await axios(url);
