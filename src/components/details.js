@@ -32,7 +32,9 @@ export default function Details({ movie }) {
   return (
     <View>
       {isLoading ? <ActivityIndicator /> : null}
-      <RenderDetails details={details} />
+      <ScrollView>
+        <RenderDetails details={details} />
+      </ScrollView>
     </View>
   );
 }
