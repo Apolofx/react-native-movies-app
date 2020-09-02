@@ -10,7 +10,7 @@ export async function fetchDetails(url) {
   return res.data;
 }
 
-export default async function fetchMovie(url, max_results = 10) {
+export default async function fetchMovie(url, max_results) {
   const res = await axios(url);
   let movieList = res.data.Response === "False" ? [] : res.data.Search;
   if (movieList.length > max_results) {
