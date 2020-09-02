@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ActivityIndicator, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  ScrollView,
+  Image,
+  StyleSheet,
+} from "react-native";
 import { fetchDetails } from "../helpers/fetchAPI";
 
 export default function Details({ movie }) {
@@ -26,15 +33,37 @@ export default function Details({ movie }) {
   const RenderDetails = ({ details }) => {
     const fields = Object.keys(details);
     return fields.map((field, index) => (
-      <Text key={index}>{`${field}: ${details[field]}`}</Text>
+      <View key={index} style={styles.textContainer}>
+        <Text style={styles.title}>{`${field}: `}</Text>
+        <Text>{`${details[field]}`}</Text>
+      </View>
     ));
   };
   return (
     <View>
       {isLoading ? <ActivityIndicator /> : null}
-      <ScrollView>
+      <ScrollView style={{ marginHorizontal: 18 }}>
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={{
+              uri: `${details.Poster}`,
+            }}
+          />
+        </View>
         <RenderDetails details={details} />
       </ScrollView>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  image: { height: 300, resizeMode: "contain" },
+  imageContainer: {
+    backgroundColor: "black",
+    borderRadius: 20,
+    marginVertical: 20,
+  },
+  title: { fontWeight: "600" },
+  textContainer: { flexDirection: "row", flexWrap: "wrap" },
+});
