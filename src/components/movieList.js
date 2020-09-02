@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     flex: 1,
-    fontSize: 16,
+    fontSize: 18,
   },
   item: {
     flexDirection: "row",
