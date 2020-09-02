@@ -46,9 +46,13 @@ export default function Details({ movie }) {
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={{
-              uri: `${details.Poster}`,
-            }}
+            source={
+              details.Poster !== "N/A"
+                ? {
+                    uri: `${details.Poster}`,
+                  }
+                : require("../../assets/no-image.jpg")
+            }
           />
         </View>
         <RenderDetails details={details} />
