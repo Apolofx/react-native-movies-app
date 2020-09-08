@@ -9,4 +9,5 @@
 - Show movie details on title selection
 
 Demo
+
 ![](assets/demo.gif)
